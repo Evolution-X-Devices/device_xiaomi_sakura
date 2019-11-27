@@ -35,4 +35,10 @@
 
     <!-- Default state for LiveDisplay -->
     <bool name="config_liveDisplayAvailable">true</bool>
+
+    <!-- Smart charging -->
+    <bool name="config_SmartChargingAvailable">true</bool>
+    <string name="config_SmartChargingSysfsNode" translatable="false">/sys/class/power_supply/battery/battery_charging_enabled</string>
+    <string name="config_SmartChargingSupspendValue" translatable="false">0</string>
+    <string name="config_SmartChargingResumeValue" translatable="false">1</string>
 </resources>
