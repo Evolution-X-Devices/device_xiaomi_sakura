@@ -6,6 +6,9 @@ ro.config.alarm_vol_default=3
 # Bluetooth SOC type
 persist.vendor.btstack.enable.splita2dp=false
 
+# Charger
+ro.charger.enable_suspend=true
+
 # DPM
 persist.vendor.dpm.feature=0
 
