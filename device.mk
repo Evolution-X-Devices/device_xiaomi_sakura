@@ -454,6 +454,7 @@ PRODUCT_PACKAGES += \
     hostapd \
     dhcpcd.conf \
     wcnss_service \
+    WifiOverlay \
     wpa_supplicant \
     wpa_supplicant.conf \
     libwifi-hal-qcom \
