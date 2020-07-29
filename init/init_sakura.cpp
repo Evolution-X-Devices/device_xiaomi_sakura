@@ -54,6 +54,15 @@ void property_override(string prop, string value)
        __system_property_add(prop.c_str(), prop.size(), value.c_str(), value.size());
 }
 
+void property_override_multifp(char const buildfp[], char const systemfp[],
+	char const bootimagefp[], char const vendorfp[], char const value[])
+{
+	property_override(buildfp, value);
+	property_override(systemfp, value);
+	property_override(bootimagefp, value);
+	property_override(vendorfp, value);
+}
+
 void check_device()
 {
     struct sysinfo sys;
@@ -76,7 +85,7 @@ void check_device()
 void vendor_load_properties()
 {
     check_device();
-    
+
     // Dalvik
     property_override("dalvik.vm.heapstartsize", "8m");
     property_override("dalvik.vm.heapgrowthlimit", "192m");
@@ -88,6 +97,8 @@ void vendor_load_properties()
     property_override("org.evolution.build_donate_url", "https://t.me/IMZihad21");
     property_override("org.evolution.build_maintainer", "ZèD");
     property_override("org.evolution.build_support_url", "https://t.me/EvolutionXSakura");
+    // Fingerprint
+    property_override_multifp("ro.build.fingerprint", "ro.system.build.fingerprint", "ro.bootimage.build.fingerprint", "ro.vendor.build.fingerprint", "google/sunfish/sunfish:11/RP1A.201105.002/6869500:user/release-keys");
     // Misc
     property_override("ro.com.google.clientidbase", "android-xiaomi");
     property_override("ro.com.google.clientidbase.ms", "android-xiaomi-rev1");
