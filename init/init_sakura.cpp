@@ -55,7 +55,10 @@ void property_override_dual(char const system_prop[], char const vendor_prop[],
 
 void vendor_load_properties()
 {
-    // fingerprint
-    property_override("ro.build.description", "sakura-user 9 PKQ1.180917.001 20.1.9 release-keys");
-    property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "xiaomi/tissot/tissot_sprout:8.0.0/OPR1.170623.026/8.1.10:user/release-keys");
+  // fingerprint
+	property_override("ro.build.description", "sakura-user 9 PKQ1.180917.001 20.1.9 release-keys");
+	property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "xiaomi/tissot/tissot_sprout:8.0.0/OPR1.170623.026/8.1.10:user/release-keys");
+  // Eovlution-X
+	property_override("ro.apex.updatable", "true");
+	property_override("ro.oem_unlock_supported", "0");
 }
