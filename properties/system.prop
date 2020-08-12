@@ -1,0 +1,10 @@
+# Nitz
+persist.vendor.radio.nitz_plmn=""
+persist.vendor.radio.nitz_lons_0=""
+persist.vendor.radio.nitz_lons_1=""
+persist.vendor.radio.nitz_lons_2=""
+persist.vendor.radio.nitz_lons_3=""
+persist.vendor.radio.nitz_sons_0=""
+persist.vendor.radio.nitz_sons_1=""
+persist.vendor.radio.nitz_sons_2=""
+persist.vendor.radio.nitz_sons_3=""
