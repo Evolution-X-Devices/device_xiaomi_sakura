@@ -84,6 +84,11 @@ void vendor_load_properties()
     property_override("dalvik.vm.heaptargetutilization", heaptargetutilization);
     property_override("dalvik.vm.heapminfree", heapminfree);
     property_override("dalvik.vm.heapmaxfree", heapmaxfree);
+    // Eovlution-X
+    property_override("org.evolution.build_donate_url", "https://t.me/IMZihad21");
+    property_override("org.evolution.build_maintainer", "ZèD");
+    property_override("org.evolution.build_support_url", "https://t.me/EvolutionXSakura");
+    // Misc
     property_override("ro.com.google.clientidbase", "android-xiaomi");
     property_override("ro.com.google.clientidbase.ms", "android-xiaomi-rev1");
     property_override("ro.apex.updatable", "true");
