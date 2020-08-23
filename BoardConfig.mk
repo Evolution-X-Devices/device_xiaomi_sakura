@@ -45,6 +45,8 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
 TARGET_KERNEL_SOURCE := kernel/xiaomi/sakura
 TARGET_KERNEL_VERSION := 4.9
 TARGET_KERNEL_CONFIG := sakura_defconfig
+TARGET_KERNEL_CLANG_COMPILE := true
+TARGET_KERNEL_CLANG_VERSION := r353983d
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := sakura,sakura_india
