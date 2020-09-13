@@ -415,7 +415,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vndk_package \
     libstdc++.vendor \
-    libcutils.so
+    libcutils.so \
+    com.android.vndk.current.on_vendor
 
 # Wallpapers
 PRODUCT_PACKAGES += \
