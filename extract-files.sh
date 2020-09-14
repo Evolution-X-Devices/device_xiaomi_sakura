@@ -58,6 +58,8 @@ setup_vendor "${DEVICE}" "${VENDOR}" "${AOSP_ROOT}" true "${CLEAN_VENDOR}"
 extract "${MY_DIR}/proprietary-files.txt" "${SRC}" \
         "${KANG}" --section "${SECTION}"
 
-BLOB_ROOT="${AOSP_ROOT}/vendor/${VENDOR}/${DEVICE}/proprietary"
+# load Q libcutils
+DPM_FW="$AOSP_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary/product/lib64/libdpmframework.so
+patchelf --replace-needed libcutils.so libcutils-v29.so "$DPM_FW"
 
 "${MY_DIR}/setup-makefiles.sh"
