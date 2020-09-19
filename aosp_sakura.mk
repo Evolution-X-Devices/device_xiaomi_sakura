@@ -31,5 +31,3 @@ TARGET_VENDOR := Xiaomi
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME="sakura" \
     TARGET_DEVICE="sakura"
-
-PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
