@@ -27,45 +27,31 @@
    IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <stdlib.h>
-#include <fstream>
-#include <string.h>
-#include <sys/sysinfo.h>
-#include <unistd.h>
-
-#include <android-base/properties.h>
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <sys/sysinfo.h>
 
-#include "property_service.h"
 #include "vendor_init.h"
+#include "property_service.h"
+#include "log/log.h"
 
-using android::base::GetProperty;
-using android::init::property_set;
-
-char const *heapstartsize;
-char const *heapgrowthlimit;
-char const *heapsize;
+char const *heaptargetutilization;
 char const *heapminfree;
 char const *heapmaxfree;
-char const *heaptargetutilization;
 
-void property_override(char const prop[], char const value[])
+//using android::base::SetProperty;
+using std::string;
+
+void property_override(string prop, string value)
 {
-    prop_info *pi;
+    auto pi = (prop_info*) __system_property_find(prop.c_str());
 
-    pi = (prop_info*) __system_property_find(prop);
-    if (pi)
-        __system_property_update(pi, value, strlen(value));
+    if (pi != nullptr)
+       __system_property_update(pi, value.c_str(), value.size());
     else
-        __system_property_add(prop, strlen(prop), value, strlen(value));
-}
-
-void property_override_dual(char const system_prop[], char const vendor_prop[],
-    char const value[])
-{
-    property_override(system_prop, value);
-    property_override(vendor_prop, value);
+       __system_property_add(prop.c_str(), prop.size(), value.c_str(), value.size());
 }
 
 void check_device()
@@ -74,45 +60,28 @@ void check_device()
 
     sysinfo(&sys);
 
-    if (sys.totalram > 5072ull * 1024 * 1024) {
-        // from - phone-xhdpi-6144-dalvik-heap.mk
-        heapstartsize = "16m";
-        heapgrowthlimit = "256m";
-        heapsize = "512m";
-        heaptargetutilization = "0.5";
-        heapminfree = "8m";
-        heapmaxfree = "32m";
-    } else if (sys.totalram > 3072ull * 1024 * 1024) {
-        // from - phone-xxhdpi-4096-dalvik-heap.mk
-        heapstartsize = "8m";
-        heapgrowthlimit = "192m";
-        heapsize = "512m";
+    if (sys.totalram > 2048ull * 1024 * 1024) {
+        // from phone-xhdpi-4096-dalvik-heap.mk
         heaptargetutilization = "0.6";
         heapminfree = "8m";
         heapmaxfree = "16m";
     } else {
-        // from - phone-xhdpi-2048-dalvik-heap.mk
-        heapstartsize = "8m";
-        heapgrowthlimit = "192m";
-        heapsize = "512m";
+        // from phone-xhdpi-2048-dalvik-heap.mk
         heaptargetutilization = "0.75";
         heapminfree = "512k";
         heapmaxfree = "8m";
-    }
+   }
 }
 
 void vendor_load_properties()
 {
-    // dalvik 
     check_device();
-    property_set("dalvik.vm.heapstartsize", heapstartsize);
-    property_set("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
-    property_set("dalvik.vm.heapsize", heapsize);
-    property_set("dalvik.vm.heaptargetutilization", heaptargetutilization);
-    property_set("dalvik.vm.heapminfree", heapminfree);
-    property_set("dalvik.vm.heapmaxfree", heapmaxfree);
-
-    // fingerprint
-    property_override("ro.build.description", "sakura-user 9 PKQ1.180917.001 20.1.9 release-keys");
-    property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "google/coral/coral:10/QQ3A.200605.001/6392402:user/release-keys");
+    
+    // Dalvik
+    property_override("dalvik.vm.heapstartsize", "8m");
+    property_override("dalvik.vm.heapgrowthlimit", "192m");
+    property_override("dalvik.vm.heapsize", "512m");
+    property_override("dalvik.vm.heaptargetutilization", heaptargetutilization);
+    property_override("dalvik.vm.heapminfree", heapminfree);
+    property_override("dalvik.vm.heapmaxfree", heapmaxfree);
 }
