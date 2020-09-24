@@ -1,18 +1,13 @@
 [
    {
-   "repository": "vendor_xiaomi",
-   "target_path": "vendor/xiaomi",
+   "repository": "vendor_xiaomi_sakura",
+   "target_path": "vendor/xiaomi/sakura",
    "branch": "ten"
  },
     {
-   "repository": "kernel_xiaomi_msm8953",
+   "remote": "github",
+   "repository": "darkhz/revvz_sakura",
    "target_path": "kernel/xiaomi/sakura",
-   "branch": "ten"
- },
- {
-   "repository": "packages_apps_PixelLiveWallpaper",
-   "target_path": "packages/apps/PixelLiveWallpaper",
-   "branch": "ten",
-   "remote": "pixel-gitlab"
+   "branch": "beta-4.9-Q"
  }
 ]
