@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2019 The LineageOS Project
+# Copyright (C) 2020 The Evolution-X Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -19,16 +19,15 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_system_ext.mk)
 # Inherit from sakura device
 $(call inherit-product, device/xiaomi/sakura/device.mk)
 
-# Inherit some common PixelExperience stuff.
+# Inherit some common Evolution X stuff.
 TARGET_BOOT_ANIMATION_RES := 1080
 TARGET_GAPPS_ARCH := arm64
-TARGET_INCLUDE_STOCK_ARCORE := true
-TARGET_INCREMENTAL_BLOCK_BASED := true
-$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
+WITH_GAPPS := true
+$(call inherit-product, vendor/evolution/config/common_full_phone.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := sakura
-PRODUCT_NAME := aosp_sakura
+PRODUCT_NAME := evolution_sakura
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Redmi 6 Pro
 PRODUCT_MANUFACTURER := Xiaomi

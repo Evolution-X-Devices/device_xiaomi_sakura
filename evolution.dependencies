@@ -1,0 +1,14 @@
+[
+ {
+  "repository": "vendor_xiaomi_sakura",
+  "target_path": "vendor/xiaomi/sakura",
+  "clone-depth" : "1"
+ },
+ {
+  "remote": "github",
+  "repository": "darkhz/revvz_sakura",
+  "target_path": "kernel/xiaomi/sakura",
+  "branch": "beta-4.9-Q",
+  "clone-depth" : "1"
+ }
+]

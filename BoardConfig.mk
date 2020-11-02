@@ -44,6 +44,7 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
 TARGET_KERNEL_SOURCE := kernel/xiaomi/sakura
 TARGET_KERNEL_VERSION := 4.9
 TARGET_KERNEL_CONFIG := sakura_defconfig
+TARGET_KERNEL_CLANG_COMPILE := true
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := sakura,sakura_india
@@ -95,7 +96,7 @@ TARGET_USE_QTI_BT_STACK := true
 
 # Build
 BUILD_BROKEN_DUP_RULES := true
-BUILD_BROKEN_PHONY_TARGETS := true
+BUILD_BROKEN_PREBUILT_ELF_FILES := true
 
 # Camera
 BOARD_QTI_CAMERA_32BIT_ONLY := true
@@ -191,7 +192,7 @@ DISABLE_RILD_OEM_HOOK := true
 ENABLE_VENDOR_RIL_SERVICE := true
 
 # SELinux
-include device/qcom/sepolicy-legacy-um/sepolicy.mk
+include device/qcom/sepolicy-legacy-um/SEPolicy.mk
 
 # Sepolicy
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/private

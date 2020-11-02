@@ -5,4 +5,10 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosp_sakura.mk
+    $(LOCAL_DIR)/evolution_sakura.mk
+
+COMMON_LUNCH_CHOICES := \
+    evolution_sakura-user \
+    evolution_sakura-userdebug \
+    evolution_sakura-eng
+    

@@ -14,9 +14,9 @@ VENDOR=xiaomi
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "${MY_DIR}" ]]; then MY_DIR="${PWD}"; fi
 
-AOSP_ROOT="${MY_DIR}"/../../..
+EVO_ROOT="${MY_DIR}"/../../..
 
-HELPER="${AOSP_ROOT}/vendor/aosp/build/tools/extract_utils.sh"
+HELPER="${EVO_ROOT}/vendor/evolution/build/tools/extract_utils.sh"
 if [ ! -f "${HELPER}" ]; then
     echo "Unable to find helper script at ${HELPER}"
     exit 1
@@ -53,13 +53,13 @@ if [ -z "${SRC}" ]; then
 fi
 
 # Initialize the helper
-setup_vendor "${DEVICE}" "${VENDOR}" "${AOSP_ROOT}" true "${CLEAN_VENDOR}"
+setup_vendor "${DEVICE}" "${VENDOR}" "${EVO_ROOT}" true "${CLEAN_VENDOR}"
 
 extract "${MY_DIR}/proprietary-files.txt" "${SRC}" \
         "${KANG}" --section "${SECTION}"
 
 # load Q libcutils
-DPM_FW="$AOSP_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary/product/lib64/libdpmframework.so
+DPM_FW="$EVO_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary/product/lib64/libdpmframework.so
 patchelf --replace-needed libcutils.so libcutils-v29.so "$DPM_FW"
 
 "${MY_DIR}/setup-makefiles.sh"
