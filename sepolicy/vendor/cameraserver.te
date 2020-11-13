@@ -1,3 +1,2 @@
 allow cameraserver mediacodec:binder call;
 
-get_prop(cameraserver, persist_camera_prop)
